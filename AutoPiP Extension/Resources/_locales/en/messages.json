@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "AutoPiP Extension",
+        "description": "AutoPiP"
+    },
+    "extension_description": {
+        "message": "This is AutoPiP Extension. Automatically enables Picture-in-Picture mode when switching tabs.",
+        "description": "Automatically enables Picture-in-Picture mode when switching tabs."
+    }
+}
