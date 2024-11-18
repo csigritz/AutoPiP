@@ -14,10 +14,8 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 
 ## Installation
 
-1. Download the latest release
-2. Open Safari
-3. Go to Safari > Settings > Extensions
-4. Enable AutoPiP extension
+- Currently you have to clone this repo and build the app using xcode yourself.
+- In the future I might add a build script to make this easier and publish the extension via the App Store.
 
 ## Usage
 
@@ -55,6 +53,7 @@ This extension is built using:
 - [ ] Add visual status indication
 - [ ] Code optimization and cleanup
 - [ ] Improve documentation
+- [ ] Publish the app via the App Store
 
 ## Contributing
 
