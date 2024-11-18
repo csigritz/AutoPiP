@@ -9,13 +9,35 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 - **Automatic PiP**: Automatically enables Picture-in-Picture mode when switching away from a tab with a playing video
 - **Smart Detection**: Only activates PiP for actively playing videos
 - **Auto Disable**: Automatically disables PiP when returning to the video tab
-- **Wide Compatibility**: Currently tested with YouTube videos
+- **Wide Compatibility**: See [Compatibility Status](##compatibility-status) for more information
+
 - **Status Indication**: Visual feedback of extension status through toolbar icon (coming soon)
 
 ## Installation
 
 - Currently you have to clone this repo and build the app using xcode yourself.
 - In the future I might add a build script to make this easier and publish the extension via the App Store.
+
+## Compatibility Status
+
+| Platform | Notes |
+|----------|--------|
+| YouTube | ✅ |
+| Twitch | ✅ |
+| Amazon Prime Video | ❌ |
+| Netflix | ⁉️ |
+| MAX | ⁉️ |
+| Disney+ | ⁉️ |
+| Apple TV+ | ⁉️ |
+
+
+### 📝 Notes on Compatibility
+- All HTML5 video players should theoretically work
+- Some streaming services may require additional authentication or have DRM restrictions
+- Compatibility may vary depending on Safari and macOS versions
+
+> This compatibility list will be updated as more platforms are tested. Please report your experiences with other video platforms through issues on GitHub.
+
 
 ## Usage
 
@@ -28,8 +50,8 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 
 ## Requirements
 
-- macOS 15.1 or later
-- Safari 17 or later
+- macOS 14 or later
+- Safari 16 or later
 
 ## Development
 
@@ -41,7 +63,6 @@ This extension is built using:
 ## Current Limitations
 
 - Only tested on macOS 15.1
-- Currently only tested with YouTube videos
 - Toggle functionality via toolbar icon is still under development
 - Code might need optimization (beginner project)
 
