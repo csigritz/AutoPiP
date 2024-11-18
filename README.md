@@ -9,7 +9,7 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 - **Automatic PiP**: Automatically enables Picture-in-Picture mode when switching away from a tab with a playing video
 - **Smart Detection**: Only activates PiP for actively playing videos
 - **Auto Disable**: Automatically disables PiP when returning to the video tab
-- **Wide Compatibility**: See [Compatibility Status](##compatibility-status) for more information
+- **Wide Compatibility**: See [Compatibility Status](#compatibility-status) for more information
 
 - **Status Indication**: Visual feedback of extension status through toolbar icon (coming soon)
 
