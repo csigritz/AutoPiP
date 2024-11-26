@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+    <channel>
+        <title>AutoPiP Updates</title>
+        <item>
+            <title>Version 0.2</title>
+            <description>
+                <![CDATA[
+                    <ul>
+                        <li>Implemented autoupdater (using sparkle project)</li>
+                    </ul>
+                ]]>
+            </description>
+            <pubDate>Di, 26 Nov 2024 15:00:00 +0000</pubDate>
+            <enclosure
+                url="https://github.com/vordenken/autopip/releases/download/v0.2/AutoPiP.dmg"
+                sparkle:version="0.2"
+                sparkle:edSignature="2GecN7z1i3agIY2fxcssKG5awCG6bI6anQWUW4cHqrkWOst8a81XdX9cK8KeQfHLMpyy5gg4buCHuwgpd2NDCA=="
+                length="5524923"
+                type="application/octet-stream"/>
+        </item>
+    </channel>
+</rss>
