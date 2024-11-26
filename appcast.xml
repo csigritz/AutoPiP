@@ -7,16 +7,16 @@
             <description>
                 <![CDATA[
                     <ul>
-                        <li>Autoupdater Sparkle implementiert</li>
+                        <li>Implemented autoupdater (using sparkle project)</li>
                     </ul>
                 ]]>
             </description>
-            <pubDate>Di, 26 Nov 2024 14:18:00 +0000</pubDate>
+            <pubDate>Di, 26 Nov 2024 15:00:00 +0000</pubDate>
             <enclosure
                 url="https://github.com/vordenken/autopip/releases/download/v0.2/AutoPiP.dmg"
                 sparkle:version="0.2"
-                sparkle:edSignature="/UZMyKoJ0Je/FYF3gQd+vPjXGyCtU1P9hroWJ+iHBSdnsImoil0aucDW1XjqLxgwglZAVOyH2/USm8FHvuwZAg=="
-                length="5813539"
+                sparkle:edSignature="2GecN7z1i3agIY2fxcssKG5awCG6bI6anQWUW4cHqrkWOst8a81XdX9cK8KeQfHLMpyy5gg4buCHuwgpd2NDCA=="
+                length="5524923"
                 type="application/octet-stream"/>
         </item>
     </channel>

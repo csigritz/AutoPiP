@@ -5,7 +5,7 @@
 	<key>SUEnableInstallerLauncherService</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/vordenken/autopip/feature/sparkle/appcast.xml</string>
+	<string>https://raw.githubusercontent.com/vordenken/autopip/main/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>nQbMaNXnNuAWeNUK+XVipWMkAjG6xf/Rb2Afstxg4jg=</string>
 </dict>

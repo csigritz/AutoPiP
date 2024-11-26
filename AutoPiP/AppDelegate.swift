@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         appMenu.addItem(NSMenuItem.separator())
         appMenu.addItem(NSMenuItem(title: "Check for updates...", action: #selector(checkForUpdates(_:)), keyEquivalent: ""))
         appMenu.addItem(NSMenuItem.separator())
-        appMenu.addItem(NSMenuItem(title: "Terminate AutoPiP", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        appMenu.addItem(NSMenuItem(title: "Close AutoPiP", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
         // Support Menu statt Help Menu
         let supportMenu = NSMenu(title: "Support")

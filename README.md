@@ -32,6 +32,7 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 
 
 ### 📝 Notes on Compatibility
+
 - All HTML5 video players should theoretically work
 - Some streaming services may require additional authentication or have DRM restrictions
 - Compatibility may vary depending on Safari and macOS versions
@@ -43,8 +44,8 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 
 - The extension works automatically when enabled
 - PiP will activate automatically when:
-  - A video is actively playing
-  - You switch to another tab
+  - A video is actively playing including audio
+  - You switch to another tab/app
 - PiP will deactivate automatically when:
   - You return to the video tab
 
@@ -96,9 +97,8 @@ This project is licensed under the GNU GPLv3 License - see the LICENSE file for 
 - Inspired by various PiP extensions
 - Built with Safari Web Extension technology
 - Thanks to the Swift and Safari development community for resources and documentation
+- Updater using [Sparkle](https://sparkle-project.org)
 
 ## Author
 
 vordenken
-
----
