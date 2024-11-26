@@ -11,12 +11,12 @@
                     </ul>
                 ]]>
             </description>
-            <pubDate>Di, 26 Nov 2024 14:18:00 +0000</pubDate>
+            <pubDate>Di, 26 Nov 2024 14:00:00 +0000</pubDate>
             <enclosure
                 url="https://github.com/vordenken/autopip/releases/download/v0.2/AutoPiP.zip"
                 sparkle:version="0.2"
-                sparkle:edSignature="/UZMyKoJ0Je/FYF3gQd+vPjXGyCtU1P9hroWJ+iHBSdnsImoil0aucDW1XjqLxgwglZAVOyH2/USm8FHvuwZAg=="
-                length="5813539"
+                sparkle:edSignature="pB89BKLotcbM3UFGrefYf4q1vt9TKkMwhVMrxpIjcnvixGGbggfJHEfl59cmJLE7oa1GNzHFrheegYhF13hiCg=="
+                length="5813538"
                 type="application/octet-stream"/>
         </item>
     </channel>
