@@ -13,30 +13,46 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let updateController = UpdateController()
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Override point for customization after application launch.
-        
-        // Erstelle Update-Menü
-        let mainMenu = NSMenu()
-        let appMenuItem = NSMenuItem()
-        let appMenu = NSMenu()
-        let checkForUpdatesItem = NSMenuItem(
-            title: "Nach Updates suchen...",
-            action: #selector(checkForUpdates(_:)),
-            keyEquivalent: ""
-        )
-        
-        mainMenu.addItem(appMenuItem)
-        appMenuItem.submenu = appMenu
-        appMenu.addItem(checkForUpdatesItem)
-        
-        NSApplication.shared.mainMenu = mainMenu
+        setupMenu()
     }
-
+    
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
     
     @objc func checkForUpdates(_ sender: Any?) {
         updateController.checkForUpdates()
+    }
+    
+    private func setupMenu() {
+        let mainMenu = NSMenu()
+        // App Menu
+        let appMenu = NSMenu()
+        let appMenuItem = NSMenuItem(title: "AutoPiP", action: nil, keyEquivalent: "")
+        appMenuItem.submenu = appMenu
+        
+        appMenu.addItem(NSMenuItem(title: "About AutoPiP", action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: ""))
+        appMenu.addItem(NSMenuItem.separator())
+        appMenu.addItem(NSMenuItem(title: "Check for updates...", action: #selector(checkForUpdates(_:)), keyEquivalent: ""))
+        appMenu.addItem(NSMenuItem.separator())
+        appMenu.addItem(NSMenuItem(title: "Terminate AutoPiP", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        
+        // Support Menu statt Help Menu
+        let supportMenu = NSMenu(title: "Support")
+        let supportMenuItem = NSMenuItem(title: "Support", action: nil, keyEquivalent: "")
+        supportMenuItem.submenu = supportMenu
+        
+        supportMenu.addItem(NSMenuItem(title: "GitHub Repository", action: #selector(openGitHub(_:)), keyEquivalent: ""))
+        
+        mainMenu.addItem(appMenuItem)
+        mainMenu.addItem(supportMenuItem)
+        
+        NSApplication.shared.mainMenu = mainMenu
+    }
+    
+    @objc func openGitHub(_ sender: Any?) {
+        if let url = URL(string: "https://github.com/vordenken/AutoPiP") {
+            NSWorkspace.shared.open(url)
+        }
     }
 }
