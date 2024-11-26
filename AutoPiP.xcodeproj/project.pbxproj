@@ -411,7 +411,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "AutoPiP Extension/AutoPiP_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.2;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = NRKZZ9TFF7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -425,7 +425,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -445,7 +445,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "AutoPiP Extension/AutoPiP_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.2;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = NRKZZ9TFF7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -459,7 +459,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -600,7 +600,7 @@
 				CODE_SIGN_ENTITLEMENTS = AutoPiP/AutoPiP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.2;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = NRKZZ9TFF7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -616,7 +616,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -640,7 +640,7 @@
 				CODE_SIGN_ENTITLEMENTS = AutoPiP/AutoPiP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.2;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = NRKZZ9TFF7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -656,7 +656,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
