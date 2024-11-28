@@ -3,6 +3,25 @@
     <channel>
         <title>AutoPiP Updates</title>
         <item>
+                    <title>Version 0.3</title>
+                    <description>
+                        <![CDATA[
+                            <ul>
+                                <li>Added toolbar menu icon to easily toggle the extension on/off</li>
+                                <li>New feature: Automatic PiP activation when switching from Safari to another app (and deactivation when switching back)</li>
+                                <li>Added Ko-fi/Buy Me a Coffee support options for those who want to support the development</li>
+                            </ul>
+                        ]]>
+                    </description>
+                    <pubDate>Do, 28 Nov 2024 12:45:00 +0000</pubDate>
+                    <enclosure
+                        url="https://github.com/vordenken/autopip/releases/download/v0.3/AutoPiP.dmg"
+                        sparkle:version="0.3"
+                        sparkle:edSignature="JhFaynBUg522Knn8reqBzGxrx4MVzWX/HEy0H9hf3V1cD88LHbR6JVg8Ic07PgrXft+JXACNQmdR24XF4f3QCw=="
+                        length="5536521"
+                        type="application/octet-stream"/>
+                </item>
+        <item>
             <title>Version 0.2</title>
             <description>
                 <![CDATA[

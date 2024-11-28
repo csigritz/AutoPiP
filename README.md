@@ -11,8 +11,6 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 - **Auto Disable**: Automatically disables PiP when returning to the video tab
 - **Wide Compatibility**: See [Compatibility Status](#compatibility-status) for more information
 
-- **Status Indication**: Visual feedback of extension status through toolbar icon (coming soon)
-
 ## Installation
 
 - Download the latest release [here](https://github.com/vordenken/AutoPiP/releases)
@@ -48,6 +46,14 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 - PiP will deactivate automatically when:
   - You return to the video tab
 
+## Support the Project
+
+If you find this extension helpful, consider supporting its development:
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/vordenken)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/vordenken)
+
 ## Requirements
 
 - macOS 14 or later
@@ -63,12 +69,11 @@ This extension is built using:
 ## Current Limitations
 
 - Only tested on macOS 15.1
-- Toggle functionality via toolbar icon is still under development
 - Code might need optimization (beginner project)
 
 ## To-Do
 
-- [ ] Implement toolbar icon toggle functionality
+- [X] Implement toolbar icon toggle functionality
 - [ ] Test with other video platforms
 - [ ] Test on different macOS versions
 - [ ] Add visual status indication
@@ -91,12 +96,17 @@ All contributions are welcome! Feel free to submit issues and pull requests.
 
 This project is licensed under the GNU GPLv3 License - see the LICENSE file for details.
 
+## Privacy
+
+AutoPiP respects your privacy and does not collect any personal data. For more information, see our [Privacy Policy](PRIVACY.md).
+
 ## Acknowledgments
 
 - Inspired by various PiP extensions
 - Built with Safari Web Extension technology
 - Thanks to the Swift and Safari development community for resources and documentation
 - Updater using [Sparkle](https://sparkle-project.org)
+- Icons by [icons8](https://icons8.com)
 
 ## Author
 
