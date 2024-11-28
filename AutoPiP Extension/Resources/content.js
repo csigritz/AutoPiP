@@ -1,7 +1,49 @@
 // content.js
-document.addEventListener("visibilitychange", handleVisibilityChange);
-window.addEventListener("blur", handleWindowBlur);
-window.addEventListener("focus", handleWindowFocus);
+let isEnabled = true;
+
+// Wrapper-Funktionen für Event Listener
+function handleVisibilityChangeWrapper() {
+    if (isEnabled) handleVisibilityChange();
+}
+
+function handleWindowBlurWrapper() {
+    if (isEnabled) handleWindowBlur();
+}
+
+function handleWindowFocusWrapper() {
+    if (isEnabled) handleWindowFocus();
+}
+
+// Initial Event Listener Setup mit Wrapper-Funktionen
+document.addEventListener("visibilitychange", handleVisibilityChangeWrapper);
+window.addEventListener("blur", handleWindowBlurWrapper);
+window.addEventListener("focus", handleWindowFocusWrapper);
+
+// Lade initialen Status
+browser.storage.local.get('enabled', function(result) {
+    isEnabled = result.enabled === undefined ? true : result.enabled;
+});
+
+// Message Listener für Toggle-Befehle
+browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.command === "toggleAutoPiP") {
+        isEnabled = message.enabled;
+        console.log('AutoPiP enabled:', isEnabled);
+        
+        // Wenn deaktiviert, PiP sofort beenden
+        if (!isEnabled && getVideo()) {
+            const video = getVideo();
+            if (document.pictureInPictureElement ||
+                (video.webkitPresentationMode &&
+                 video.webkitPresentationMode === "picture-in-picture")) {
+                disablePiP();
+            }
+        }
+        
+        sendResponse({enabled: isEnabled});
+        return true;
+    }
+});
 
 function handleVisibilityChange() {
     const video = getVideo();

@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "AutoPiP",
-    "version": "0.2",
+    "version": "0.3",
     "default_locale": "en",
     "description": "Automatically enables Picture-in-Picture mode when switching tabs",
     "icons": {
@@ -13,11 +13,20 @@
     "permissions": [
         "activeTab",
         "<all_urls>",
-        "tabs"
+        "tabs",
+        "storage"
     ],
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "js": ["content.js"],
         "run_at": "document_end"
-    }]
+    }],
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/toolbar-icon-16.png",
+            "48": "images/toolbar-icon-48.png",
+            "128": "images/toolbar-icon-128.png"
+        }
+    }
 }
