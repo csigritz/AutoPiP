@@ -1,5 +1,9 @@
 // content.js
-document.addEventListener("visibilitychange", function() {
+document.addEventListener("visibilitychange", handleVisibilityChange);
+window.addEventListener("blur", handleWindowBlur);
+window.addEventListener("focus", handleWindowFocus);
+
+function handleVisibilityChange() {
     const video = getVideo();
     if (!video) return;
 
@@ -9,13 +13,36 @@ document.addEventListener("visibilitychange", function() {
             enablePiP();
         }
     } else {
-        // Tab wird wieder aktiv - beende PiP
-        if (document.pictureInPictureElement ||
-            (video.webkitPresentationMode && video.webkitPresentationMode === "picture-in-picture")) {
+        // Tab wird wieder aktiv - beende PiP nur wenn wir wirklich im Tab sind
+        if (document.hasFocus() &&
+            (document.pictureInPictureElement ||
+            (video.webkitPresentationMode && video.webkitPresentationMode === "picture-in-picture"))) {
             disablePiP();
         }
     }
-});
+}
+
+function handleWindowBlur() {
+    const video = getVideo();
+    if (!video) return;
+    
+    // Aktiviere PiP wenn Safari den Fokus verliert und Video läuft
+    if (!video.paused && video.currentTime > 0 && !video.ended) {
+        enablePiP();
+    }
+}
+
+function handleWindowFocus() {
+    const video = getVideo();
+    if (!video) return;
+    
+    // Deaktiviere PiP wenn Safari den Fokus erhält und wir im Video-Tab sind
+    if (!document.hidden && document.hasFocus() &&
+        (document.pictureInPictureElement ||
+        (video.webkitPresentationMode && video.webkitPresentationMode === "picture-in-picture"))) {
+        disablePiP();
+    }
+}
 
 // DOM Änderungen überwachen
 new MutationObserver(checkForVideo).observe(document, {
