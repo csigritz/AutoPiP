@@ -63,6 +63,25 @@
             width: 100%;
             border: none;
             border-top: 1px solid #ddd;
+            
+        }
+        .settings-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .checkbox-label {
+            font-size: 13px;
+            color: #333;
         }
     </style>
 </head>
@@ -71,14 +90,20 @@
         <img src="images/icon-64.png" class="app-icon" alt="AutoPiP">
         <div>
             <div class="app-name">AutoPiP</div>
-            <div class="version">v0.3</div>
+            <div class="version">v0.4</div>
         </div>
     </div>
     
-    <div class="checkbox-container">
-        <label for="toggleCheckbox">Enabled</label>
-        <input type="checkbox" id="toggleCheckbox" checked>
-    </div>
+    <div class="settings-container">
+            <div class="checkbox-container">
+                <label class="checkbox-label" for="tabSwitchCheckbox">PiP on Tab Switch</label>
+                <input type="checkbox" id="tabSwitchCheckbox" checked>
+            </div>
+            <div class="checkbox-container">
+                <label class="checkbox-label" for="windowSwitchCheckbox">PiP on Window Switch</label>
+                <input type="checkbox" id="windowSwitchCheckbox" checked>
+            </div>
+        </div>
     
     <hr>
     

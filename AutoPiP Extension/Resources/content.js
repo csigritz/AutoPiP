@@ -1,92 +1,126 @@
 // content.js
-let isEnabled = true;
+let tabSwitchEnabled = true;
+let windowSwitchEnabled = true;
 
-// Wrapper-Funktionen für Event Listener
-function handleVisibilityChangeWrapper() {
-    if (isEnabled) handleVisibilityChange();
-}
-
-function handleWindowBlurWrapper() {
-    if (isEnabled) handleWindowBlur();
-}
-
-function handleWindowFocusWrapper() {
-    if (isEnabled) handleWindowFocus();
-}
-
-// Initial Event Listener Setup mit Wrapper-Funktionen
-document.addEventListener("visibilitychange", handleVisibilityChangeWrapper);
-window.addEventListener("blur", handleWindowBlurWrapper);
-window.addEventListener("focus", handleWindowFocusWrapper);
-
-// Lade initialen Status
-browser.storage.local.get('enabled', function(result) {
-    isEnabled = result.enabled === undefined ? true : result.enabled;
+// Load initial status
+browser.storage.local.get(['tabSwitchEnabled', 'windowSwitchEnabled'], function(result) {
+    tabSwitchEnabled = result.tabSwitchEnabled === undefined ? true : result.tabSwitchEnabled;
+    windowSwitchEnabled = result.windowSwitchEnabled === undefined ? true : result.windowSwitchEnabled;
+    console.log('Initial status loaded - Tab Switch:', tabSwitchEnabled, 'Window Switch:', windowSwitchEnabled);
 });
 
-// Message Listener für Toggle-Befehle
+// Message listener for toggle commands
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.command === "toggleAutoPiP") {
-        isEnabled = message.enabled;
-        console.log('AutoPiP enabled:', isEnabled);
+    if (message.command === "toggleTabSwitch") {
+        tabSwitchEnabled = message.enabled;
+        console.log('Tab Switch toggled to:', tabSwitchEnabled);
         
-        // Wenn deaktiviert, PiP sofort beenden
-        if (!isEnabled && getVideo()) {
+        if (!tabSwitchEnabled) {
             const video = getVideo();
-            if (document.pictureInPictureElement ||
-                (video.webkitPresentationMode &&
-                 video.webkitPresentationMode === "picture-in-picture")) {
+            if (video && isPiPActive(video)) {
                 disablePiP();
             }
         }
         
-        sendResponse({enabled: isEnabled});
+        sendResponse({enabled: tabSwitchEnabled});
+        return true;
+    }
+    else if (message.command === "toggleWindowSwitch") {
+        windowSwitchEnabled = message.enabled;
+        console.log('Window Switch toggled to:', windowSwitchEnabled);
+        
+        if (!windowSwitchEnabled) {
+            const video = getVideo();
+            if (video && isPiPActive(video)) {
+                disablePiP();
+            }
+        }
+        
+        sendResponse({enabled: windowSwitchEnabled});
         return true;
     }
 });
 
-function handleVisibilityChange() {
+// Helper function for PiP status
+function isPiPActive(video) {
+    return document.pictureInPictureElement ||
+        (video.webkitPresentationMode && video.webkitPresentationMode === "picture-in-picture");
+}
+
+// Event handlers with strict event separation
+document.addEventListener("visibilitychange", (event) => {
+    // Ignore visibility changes triggered by window blur/focus
+    if (!event.isTrusted || event.sourceCapabilities) {
+        return;
+    }
+
+    // Check if tab switch is enabled before proceeding
+    if (!tabSwitchEnabled) {
+        console.log('Tab switch is disabled, ignoring visibility change');
+        return;
+    }
+
     const video = getVideo();
     if (!video) return;
 
+    console.log('Tab visibility changed, hidden:', document.hidden);
+
     if (document.hidden) {
-        // Tab wird verlassen - aktiviere PiP wenn Video läuft
         if (!video.paused && video.currentTime > 0 && !video.ended) {
+            console.log('Enabling PiP on tab switch');
             enablePiP();
         }
     } else {
-        // Tab wird wieder aktiv - beende PiP nur wenn wir wirklich im Tab sind
-        if (document.hasFocus() &&
-            (document.pictureInPictureElement ||
-            (video.webkitPresentationMode && video.webkitPresentationMode === "picture-in-picture"))) {
+        if (document.hasFocus() && isPiPActive(video)) {
+            console.log('Disabling PiP on tab switch');
             disablePiP();
         }
     }
-}
+});
 
-function handleWindowBlur() {
+window.addEventListener("blur", (event) => {
+    // Ignore blur events triggered by tab switching
+    if (!event.isTrusted || document.hidden) {
+        return;
+    }
+
+    // Check if window switch is enabled before proceeding
+    if (!windowSwitchEnabled) {
+        console.log('Window switch is disabled, ignoring blur');
+        return;
+    }
+    
     const video = getVideo();
     if (!video) return;
-    
-    // Aktiviere PiP wenn Safari den Fokus verliert und Video läuft
+
     if (!video.paused && video.currentTime > 0 && !video.ended) {
+        console.log('Enabling PiP on window blur');
         enablePiP();
     }
-}
+});
 
-function handleWindowFocus() {
+window.addEventListener("focus", (event) => {
+    // Ignore focus events triggered by tab switching
+    if (!event.isTrusted || document.hidden) {
+        return;
+    }
+
+    // Check if window switch is enabled before proceeding
+    if (!windowSwitchEnabled) {
+        console.log('Window switch is disabled, ignoring focus');
+        return;
+    }
+
     const video = getVideo();
     if (!video) return;
-    
-    // Deaktiviere PiP wenn Safari den Fokus erhält und wir im Video-Tab sind
-    if (!document.hidden && document.hasFocus() &&
-        (document.pictureInPictureElement ||
-        (video.webkitPresentationMode && video.webkitPresentationMode === "picture-in-picture"))) {
+
+    if (!document.hidden && document.hasFocus() && isPiPActive(video)) {
+        console.log('Disabling PiP on window focus');
         disablePiP();
     }
-}
+});
 
-// DOM Änderungen überwachen
+// Watch for DOM changes
 new MutationObserver(checkForVideo).observe(document, {
     subtree: true,
     childList: true
@@ -116,11 +150,9 @@ function checkForVideo() {
 }
 
 function getVideo() {
-    // Priorisiere YouTube Player
+    // Prioritize YouTube player
     const youtubeVideo = document.querySelector('.html5-main-video');
     if (youtubeVideo) return youtubeVideo;
-    
-    // Fallback für andere Video-Player
     return document.querySelector('video');
 }
 
@@ -128,7 +160,6 @@ function enablePiP() {
     const video = getVideo();
     if (!video) return;
     
-    // Prüfe ob Video wirklich läuft
     if (!video.paused && video.currentTime > 0 && !video.ended) {
         try {
             if (video.webkitSupportsPresentationMode &&
@@ -138,8 +169,9 @@ function enablePiP() {
                 video.requestPictureInPicture()
                     .catch(console.error);
             }
+            console.log('PiP enabled successfully');
         } catch (error) {
-            console.error('PiP Fehler:', error);
+            console.error('PiP enable error:', error);
         }
     }
 }
@@ -155,7 +187,8 @@ function disablePiP() {
         } else if (document.pictureInPictureElement) {
             document.exitPictureInPicture();
         }
+        console.log('PiP disabled successfully');
     } catch (error) {
-        console.error('PiP Deaktivierung Fehler:', error);
+        console.error('PiP disable error:', error);
     }
 }

@@ -1,34 +1,45 @@
 // popup.js
 document.addEventListener('DOMContentLoaded', function() {
-    const toggleCheckbox = document.getElementById('toggleCheckbox');
+    const tabSwitchCheckbox = document.getElementById('tabSwitchCheckbox');
+    const windowSwitchCheckbox = document.getElementById('windowSwitchCheckbox');
     
-    // Lade gespeicherten Status
-    browser.storage.local.get('enabled', function(result) {
-        const enabled = result.enabled === undefined ? true : result.enabled;
-        toggleCheckbox.checked = enabled;
+    // Load saved status
+    browser.storage.local.get(['tabSwitchEnabled', 'windowSwitchEnabled'], function(result) {
+        const tabEnabled = result.tabSwitchEnabled === undefined ? true : result.tabSwitchEnabled;
+        const windowEnabled = result.windowSwitchEnabled === undefined ? true : result.windowSwitchEnabled;
         
-        // Sende initialen Status an alle Tabs
-        updateAllTabs(enabled);
+        tabSwitchCheckbox.checked = tabEnabled;
+        windowSwitchCheckbox.checked = windowEnabled;
+        
+        // Send inital statu to all tabs
+        updateAllTabs('toggleTabSwitch', tabEnabled);
+        updateAllTabs('toggleWindowSwitch', windowEnabled);
     });
     
-    // Checkbox Event Listener
-    toggleCheckbox.addEventListener('change', function() {
-        const enabled = toggleCheckbox.checked;
-        console.log('Checkbox changed to:', enabled); // Debug logging
+    // Tab Switch Checkbox Event Listener
+    tabSwitchCheckbox.addEventListener('change', function() {
+        const enabled = tabSwitchCheckbox.checked;
+        console.log('Tab Switch changed to:', enabled);
         
-        // Speichere Status
-        browser.storage.local.set({ enabled: enabled });
+        browser.storage.local.set({ tabSwitchEnabled: enabled });
+        updateAllTabs('toggleTabSwitch', enabled);
+    });
+    
+    // Window Switch Checkbox Event Listener
+    windowSwitchCheckbox.addEventListener('change', function() {
+        const enabled = windowSwitchCheckbox.checked;
+        console.log('Window Switch changed to:', enabled);
         
-        // Update alle Tabs
-        updateAllTabs(enabled);
+        browser.storage.local.set({ windowSwitchEnabled: enabled });
+        updateAllTabs('toggleWindowSwitch', enabled);
     });
 });
 
-function updateAllTabs(enabled) {
+function updateAllTabs(command, enabled) {
     browser.tabs.query({}, function(tabs) {
         tabs.forEach(tab => {
             browser.tabs.sendMessage(tab.id, {
-                command: "toggleAutoPiP",
+                command: command,
                 enabled: enabled
             }).catch(err => console.log('Error sending message to tab:', err));
         });
