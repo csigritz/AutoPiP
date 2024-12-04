@@ -153,6 +153,12 @@ function getVideo() {
     // Prioritize YouTube player
     const youtubeVideo = document.querySelector('.html5-main-video');
     if (youtubeVideo) return youtubeVideo;
+    
+    // Disney+ Videoplayer
+    const disneyPlusVideo = document.querySelector('#hivePlayer');
+    if (disneyPlusVideo) return disneyPlusVideo;
+    
+    // Fallback: Search for generic video-Element
     return document.querySelector('video');
 }
 
