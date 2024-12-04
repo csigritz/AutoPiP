@@ -24,9 +24,10 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 | Amazon Prime Video | ❌ |
 | Netflix | ⁉️ |
 | MAX | ⁉️ |
-| Disney+ | ⁉️ |
-| Apple TV+ | ⁉️ |
+| Disney+ | ✅ |
+| Apple TV+ | ❌* |
 
+*AppleTV opens the app instead of launching in Safari.
 
 ### 📝 Notes on Compatibility
 
@@ -35,7 +36,6 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 - Compatibility may vary depending on Safari and macOS versions
 
 > This compatibility list will be updated as more platforms are tested. Please report your experiences with other video platforms through issues on GitHub.
-
 
 ## Usage
 
@@ -62,6 +62,7 @@ If you find this extension helpful, consider supporting its development:
 ## Development
 
 This extension is built using:
+
 - Swift
 - JavaScript
 - Safari Web Extension API
@@ -84,6 +85,7 @@ This extension is built using:
 ## Contributing
 
 As this is my first Swift/Xcode project, I'm particularly open to:
+
 - Code reviews and suggestions
 - Best practices advice
 - Feature improvements
