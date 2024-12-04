@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tabSwitchCheckbox.checked = tabEnabled;
         windowSwitchCheckbox.checked = windowEnabled;
         
-        // Send inital statu to all tabs
+        // Send initial status to all tabs
         updateAllTabs('toggleTabSwitch', tabEnabled);
         updateAllTabs('toggleWindowSwitch', windowEnabled);
     });
@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         browser.storage.local.set({ windowSwitchEnabled: enabled });
         updateAllTabs('toggleWindowSwitch', enabled);
     });
-});
 
 function updateAllTabs(command, enabled) {
     browser.tabs.query({}, function(tabs) {
