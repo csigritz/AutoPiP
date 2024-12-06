@@ -1,12 +1,18 @@
 // content.js
 let tabSwitchEnabled = true;
 let windowSwitchEnabled = true;
+let scrollSwitchEnabled = true;
+let lastScrollPosition = window.scrollY;
+let isVideoVisible = true;
 
 // Load initial status
-browser.storage.local.get(['tabSwitchEnabled', 'windowSwitchEnabled'], function(result) {
+browser.storage.local.get(['tabSwitchEnabled', 'windowSwitchEnabled', 'scrollSwitchEnabled'], function(result) {
     tabSwitchEnabled = result.tabSwitchEnabled === undefined ? true : result.tabSwitchEnabled;
     windowSwitchEnabled = result.windowSwitchEnabled === undefined ? true : result.windowSwitchEnabled;
-    console.log('Initial status loaded - Tab Switch:', tabSwitchEnabled, 'Window Switch:', windowSwitchEnabled);
+    scrollSwitchEnabled = result.scrollSwitchEnabled === undefined ? true : result.scrollSwitchEnabled;
+    console.log('Initial status loaded - Tab Switch:', tabSwitchEnabled,
+                'Window Switch:', windowSwitchEnabled,
+                'Scroll Switch:', scrollSwitchEnabled);
 });
 
 // Message listener for toggle commands
@@ -39,12 +45,37 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
         sendResponse({enabled: windowSwitchEnabled});
         return true;
     }
+    else if (message.command === "toggleScrollSwitch") {
+        scrollSwitchEnabled = message.enabled;
+        console.log('Scroll Switch toggled to:', scrollSwitchEnabled);
+        
+        if (!scrollSwitchEnabled) {
+            const video = getVideo();
+            if (video && isPiPActive(video)) {
+                disablePiP();
+            }
+        }
+        
+        sendResponse({enabled: scrollSwitchEnabled});
+        return true;
+    }
 });
 
 // Helper function for PiP status
 function isPiPActive(video) {
     return document.pictureInPictureElement ||
         (video.webkitPresentationMode && video.webkitPresentationMode === "picture-in-picture");
+}
+
+// Helper function to check if element is in viewport
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= -rect.height &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + rect.height &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
 }
 
 // Event handlers with strict event separation
@@ -119,6 +150,47 @@ window.addEventListener("focus", (event) => {
         disablePiP();
     }
 });
+
+// Scroll event listener
+window.addEventListener('scroll', debounce(() => {
+    if (!scrollSwitchEnabled) {
+        console.log('Scroll switch is disabled, ignoring scroll');
+        return;
+    }
+
+    const video = getVideo();
+    if (!video || !isYouTubePage()) return;
+    
+    const videoVisible = isElementInViewport(video);
+    
+    if (!videoVisible && isVideoVisible && !video.paused) {
+        console.log('Video scrolled out of view, enabling PiP');
+        enablePiP();
+        isVideoVisible = false;
+    } else if (videoVisible && !isVideoVisible) {
+        console.log('Video scrolled into view, disabling PiP');
+        disablePiP();
+        isVideoVisible = true;
+    }
+}, 150));
+
+// Debounce helper function
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Helper function to check if current page is YouTube
+function isYouTubePage() {
+    return window.location.hostname.includes('youtube.com');
+}
 
 // Watch for DOM changes
 new MutationObserver(checkForVideo).observe(document, {
