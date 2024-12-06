@@ -189,7 +189,9 @@ function debounce(func, wait) {
 
 // Helper function to check if current page is YouTube
 function isYouTubePage() {
-    return window.location.hostname.includes('youtube.com');
+    const allowedHosts = ['youtube.com', 'www.youtube.com'];
+        const hostname = window.location.hostname;
+        return allowedHosts.includes(hostname);
 }
 
 // Watch for DOM changes
