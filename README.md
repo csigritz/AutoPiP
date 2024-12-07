@@ -1,8 +1,15 @@
-# AutoPiP Safari Extension
+<p align="center">
+  <a href="#">
+    <img height="128" width="128" src="https://raw.github.com/vordenken/AutoPiP/main/AutoPiP/Assets.xcassets/AppIcon.appiconset/icon_512x512%402x.png">
+  </a>
+  <h1 align="center">AutoPiP for Safari</h1>
+</p>
+
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/vordenken/AutoPiP/total) ![GitHub License](https://img.shields.io/github/license/vordenken/AutoPiP)
 
 A Safari extension that automatically enables Picture-in-Picture (PiP) mode for videos when switching tabs and disables it when returning to the video tab.
 
-> **Note**: This is my first coding project using Swift and Xcode. As a beginner, I welcome any help, suggestions, or contributions to improve the code and functionality!
+> **Note**: This is my first coding project using Swift and Xcode. As a beginner, I welcome any help, suggestions, or contributions to improve the code and functionality
 
 ## Features
 
