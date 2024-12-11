@@ -29,11 +29,12 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 |----------|--------|
 | YouTube | ✅ |
 | Twitch | ✅ |
+| Disney+ | ✅ |
+| Paramount+ | ✅ |
 | Amazon Prime Video | ❌ |
+| Apple TV+ | ❌* |
 | Netflix | ⁉️ |
 | MAX | ⁉️ |
-| Disney+ | ✅ |
-| Apple TV+ | ❌* |
 
 *AppleTV opens the app instead of launching in Safari.
 
