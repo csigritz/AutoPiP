@@ -5,122 +5,79 @@
   <h1 align="center">AutoPiP for Safari</h1>
 </p>
 
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/vordenken/AutoPiP/total) ![GitHub License](https://img.shields.io/github/license/vordenken/AutoPiP)
+<p align="center">
+  <img src="https://img.shields.io/github/downloads/vordenken/AutoPiP/total" alt="Downloads">
+  <img src="https://img.shields.io/github/license/vordenken/AutoPiP" alt="License">
+  <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
+</p>
 
-A Safari extension that automatically enables Picture-in-Picture (PiP) mode for videos when switching tabs and disables it when returning to the video tab.
+A Safari extension that automatically enables Picture-in-Picture (PiP) mode for videos when switching tabs or scrolling to comments.
 
-> **Note**: This is my first coding project using Swift and Xcode. As a beginner, I welcome any help, suggestions, or contributions to improve the code and functionality
+## ✨ Features
 
-## Features
+- Automatic PiP when switching tabs or scrolling to YouTube comments
+- Smart detection of actively playing videos
+- Automatic disable when returning to video tab
+- Support for multiple streaming platforms
 
-- **Automatic PiP**: Automatically enables Picture-in-Picture mode when switching away from a tab with a playing video
-- **Smart Detection**: Only activates PiP for actively playing videos
-- **For Youtube**: Automatically enable PiP when scrolling to Youtube comments
-- **Auto Disable**: Automatically disables PiP when returning to the video tab
-- **Wide Compatibility**: See [Compatibility Status](#compatibility-status) for more information
+## 🚀 Quick Start
 
-## Installation
+1. Download the latest release [here](https://github.com/vordenken/AutoPiP/releases)
+2. Install and enable the Safari extension
+3. Start watching videos - PiP activates automatically!
 
-- Download the latest release [here](https://github.com/vordenken/AutoPiP/releases)
+## 🎯 Compatibility
 
-## Compatibility Status
+| ✅ Supported | ❌ Not Supported | ⁉️ Untested |
+|-------------|-----------------|------------|
+| YouTube     | Amazon Prime    | Netflix    |
+| Twitch      | Apple TV+*     | MAX        |
+| Disney+     |                |            |
+| Paramount+  |                |            |
 
-| Platform | Notes |
-|----------|--------|
-| YouTube | ✅ |
-| Twitch | ✅ |
-| Disney+ | ✅ |
-| Paramount+ | ✅ |
-| Amazon Prime Video | ❌ |
-| Apple TV+ | ❌* |
-| Netflix | ⁉️ |
-| MAX | ⁉️ |
+*AppleTV opens the native app instead of Safari
 
-*AppleTV opens the app instead of launching in Safari.
+> Most HTML5 video players should work. Compatibility may vary based on DRM restrictions and Safari/macOS versions.
 
-### 📝 Notes on Compatibility
-
-- All HTML5 video players should theoretically work
-- Some streaming services may require additional authentication or have DRM restrictions
-- Compatibility may vary depending on Safari and macOS versions
-
-> This compatibility list will be updated as more platforms are tested. Please report your experiences with other video platforms through issues on GitHub.
-
-## Usage
-
-- The extension works automatically when enabled
-- PiP will activate automatically when:
-  - A video is actively playing including audio
-  - You switch to another tab/app
-  - You scroll down to the comments of a youtube video
-- PiP will deactivate automatically when:
-  - You return to the video tab
-  - You scroll back up to the youtube video
-
-## Support the Project
-
-If you find this extension helpful, consider supporting its development:
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/vordenken)
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/vordenken)
-
-## Requirements
+## 💻 Requirements
 
 - macOS 14 or later
 - Safari 16 or later
 
-## Development
+## 🤝 Contributing
 
-This extension is built using:
-
-- Swift
-- JavaScript
-- Safari Web Extension API
-
-## Current Limitations
-
-- Only tested on macOS 15.1
-- Code might need optimization (beginner project)
-
-## To-Do
-
-- [X] Implement toolbar icon toggle functionality
-- [ ] Test with other video platforms
-- [ ] Test on different macOS versions
-- [ ] Add visual status indication
-- [ ] Code optimization and cleanup
-- [ ] Improve documentation
-- [ ] Publish the app via the App Store
-
-## Contributing
-
-As this is my first Swift/Xcode project, I'm particularly open to:
-
+As this is my first Swift/Xcode project, I welcome:
 - Code reviews and suggestions
-- Best practices advice
 - Feature improvements
 - Bug reports and fixes
-- Documentation improvements
 
-All contributions are welcome! Feel free to submit issues and pull requests.
+*New to contributing?* Check out our [contributing guide](CONTRIBUTING.md).
 
-## License
+## ❤️ Support
 
-This project is licensed under the GNU GPLv3 License - see the LICENSE file for details.
+If you find AutoPiP helpful, consider supporting its development:
 
-## Privacy
+<p align="center">
+  <a href="https://www.buymeacoffee.com/vordenken">
+    <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee">
+  </a>
+  <a href="https://ko-fi.com/vordenken">
+    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Ko-fi">
+  </a>
+</p>
 
-AutoPiP respects your privacy and does not collect any personal data. For more information, see our [Privacy Policy](PRIVACY.md).
+## 📝 License & Privacy
 
-## Acknowledgments
+- Licensed under GNU GPLv3 - see [LICENSE](LICENSE) file
+- No personal data collection - see [Privacy Policy](PRIVACY.md)
+
+## 🙏 Acknowledgments
 
 - Inspired by various PiP extensions
 - Built with Safari Web Extension technology
 - Thanks to the Swift and Safari development community for resources and documentation
-- Updater using [Sparkle](https://sparkle-project.org)
+- Updates via [Sparkle](https://sparkle-project.org)
 - Icons by [icons8](https://icons8.com)
 
-## Author
-
-vordenken
+---
+Created by vordenken
