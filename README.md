@@ -42,7 +42,9 @@ A Safari extension that automatically enables Picture-in-Picture (PiP) mode for 
 ## 💻 Requirements
 
 - macOS 14 or later
-- Safari 16 or later ( I wanted to add chrome/firefox support but Safari is the only browser that allows calling PiP without user-interaction - So unless this changes, AutoPiP will be Safari only)
+- Safari 16 or later
+
+> I wanted to add Chrome/Firefox support but Safari is the only browser that allows calling PiP without user-interaction - So unless this changes, AutoPiP will be Safari only
 
 ## 🤝 Contributing
 
