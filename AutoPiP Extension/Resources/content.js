@@ -231,7 +231,11 @@ function getVideo() {
     // Disney+ Videoplayer
     const disneyPlusVideo = document.querySelector('#hivePlayer');
     if (disneyPlusVideo) return disneyPlusVideo;
-    
+
+    // Twitch: Search for typical Twitch video containers
+    const twitchVideo = document.querySelector('.video-player__container video, video[data-a-player-state]');
+    if (twitchVideo) return twitchVideo;
+
     // Fallback: Search for generic video-Element
     return document.querySelector('video');
 }
